@@ -6,5 +6,21 @@
         <session-timeout>120</session-timeout>
     </session-config>
 
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>com.sda.biblioteka.servlets.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>TodayServlet</servlet-name>
+        <servlet-class>com.sda.biblioteka.servlets.TodayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TodayServlet</servlet-name>
+        <url-pattern>/today</url-pattern>
+    </servlet-mapping>
 </web-app>

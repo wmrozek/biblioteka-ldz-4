@@ -55,6 +55,17 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:9080/manager/text</url>
+                    <username>admin</username>
+                    <password>password</password>
+                    <path>/${build.finalName}</path>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
