@@ -16,6 +16,8 @@ public class HelloServlet extends HttpServlet{
         ServletOutputStream out = response.getOutputStream();
         out.println("Hello servlet123467891234!!!");
         out.println("Podany parametr to: "+param1);
-        out.println(param1.charAt(1));
+
+//        request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
+
 }

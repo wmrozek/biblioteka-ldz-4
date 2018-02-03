@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 @WebServlet(name = "AddBookServlet", urlPatterns = {"/addBookForm", "/addBook"})
 public class AddBookServlet extends HttpServlet {
@@ -45,8 +46,10 @@ public class AddBookServlet extends HttpServlet {
         }
         String title = req.getParameter("title");
         String author = req.getParameter("author");
+        String userAgent = (String) req.getAttribute("addedUserAgent");
+        LocalDate date = (LocalDate) req.getAttribute("addedDate");
         booksCount++;
-        resp.sendRedirect("./bookAdded?bookNumber="+booksCount);
+        resp.sendRedirect("./bookAdded?bookNumber="+title+author+userAgent+date.toString());
 
     }
 }
