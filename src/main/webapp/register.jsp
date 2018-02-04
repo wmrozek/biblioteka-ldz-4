@@ -27,6 +27,16 @@
     </div>
     <div style="float:right; width: 70%">
         <h2>Witaj na stronie biblioteki SDA.</h2>
+        <h5>Rejestracja</h5>
+        <form action="./register" name="regForm" method="POST">
+            <label>Login: </label>
+            <input type="text" name="login"/>
+            <label>Hasło: </label>
+            <input type="password" name="password"/>
+            <input type="submit" value="Zarejestruj" />
+
+
+        </form>
         <!-- CONTENT -->
     </div>
     <div style="clear: both"/>
