@@ -19,6 +19,7 @@
             Book book = new Book();
             book.setId(random.nextInt(2));
             book.setTitle("Pan Tadeusz - wydanie: "+random.nextInt(10));
+            book.setPrice(random.nextInt(100));
             BookContext.getInstance().addBook(book);
         }
 
@@ -74,6 +75,7 @@
                     out.println("</tr>");
                 }
             %>
+        </table>
         </table>
     </div>
     <div style="clear: both"/>
