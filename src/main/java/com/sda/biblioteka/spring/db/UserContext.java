@@ -8,6 +8,7 @@ import java.util.Random;
 
 public class UserContext {
     private static UserContext instance;
+    private Boolean isLogged = Boolean.FALSE;
 
     private List<User> users;
 
@@ -35,4 +36,11 @@ public class UserContext {
         return users.size();
     }
 
+    public void setLoggedUser(Boolean isLogged){
+        this.isLogged = isLogged;
+    }
+
+    public Boolean isLogged() {
+        return isLogged;
+    }
 }

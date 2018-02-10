@@ -18,6 +18,7 @@ public class LibraryController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("booksCount", BookContext.getInstance().getBooksCount());
         modelAndView.addObject("usersCount", UserContext.getInstance().getUsersCount());
+        modelAndView.addObject("isLoggedUser", UserContext.getInstance().isLogged());
         modelAndView.setViewName("libraryMain.jsp");
         return modelAndView;
     }
@@ -27,7 +28,20 @@ public class LibraryController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("booksCount", BookContext.getInstance().getBooksCount());
         modelAndView.addObject("usersCount", UserContext.getInstance().getUsersCount());
+        modelAndView.addObject("isAnonymous", Boolean.FALSE);
+        modelAndView.addObject("isLoggedUser", Boolean.TRUE);
         modelAndView.setViewName("register.jsp");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/login")
+    public ModelAndView loginPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("booksCount", BookContext.getInstance().getBooksCount());
+        modelAndView.addObject("usersCount", UserContext.getInstance().getUsersCount());
+        modelAndView.addObject("isAnonymous", Boolean.TRUE);
+        modelAndView.addObject("isLoggedUser", Boolean.FALSE);
+        modelAndView.setViewName("login.jsp");
         return modelAndView;
     }
 
@@ -35,6 +49,14 @@ public class LibraryController {
     public String register(@ModelAttribute(value = "regForm") User user){
         //WALIDACJA
         UserContext.getInstance().addUser(user);
+        return "redirect:/home";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@RequestParam(value="login") String login,
+                        @RequestParam(value="password") String password){
+        //TODO implementation
+        UserContext.getInstance().setLoggedUser(true);
         return "redirect:/home";
     }
 

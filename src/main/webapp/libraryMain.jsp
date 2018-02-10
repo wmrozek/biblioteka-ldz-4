@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.sda.biblioteka.spring.db.model.Book" %>
 <%@ page import="java.util.Random" %>
 <%@ page import="com.sda.biblioteka.spring.db.BookContext" %>
@@ -7,6 +8,8 @@
     <title>Biblioteka SDA Łódź</title>
 </head>
 <body>
+    <%! boolean isLooged = true; %>
+    <c:set var="isLoggedUserInPage" value="${isLoggedUser}"/>
     <%
         Random random = new Random();
         for (int i=0;i<3;i++){
@@ -15,11 +18,14 @@
             BookContext.getInstance().addBook(book);
         }
     %>
+
+    <c:if test="${isLoggedUser eq false}">
+        <jsp:forward page="/login"/>
+    </c:if>
+
+
     <div style="float:left; width: 30%">
-        <ul>
-            <li>Logowanie</li>
-            <li><a href="./register">Rejestracja</a></li>
-        </ul>
+        <%@ include file="menu.jsp"%>
 
         <p>Ilość zarejestrowanych użytkowników: ${usersCount}</p>
         <p>Ilość książek w bibliotece: ${booksCount}</p>
