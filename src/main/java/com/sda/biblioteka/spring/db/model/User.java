@@ -1,8 +1,16 @@
 package com.sda.biblioteka.spring.db.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
     private String login;
+    @Column
     private String password;
 
     public int getId() {
