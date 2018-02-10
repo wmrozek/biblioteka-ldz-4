@@ -34,4 +34,8 @@ public class BookContext {
     public int getBooksCount(){
         return books.size();
     }
+
+    public List<Book> getBooks() {
+        return books;
+    }
 }
